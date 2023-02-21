@@ -1,0 +1,19 @@
+---
+
+ #not needed. Part of Multiverse Repository enabled earlier
+  # - name: dropbox | Install Dropbox key
+    # apt_key:
+      # keyserver: pgp.mit.edu
+      # id: 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+# 
+  # - name: dropbox | Install Dropbox repository for '{{ ansible_distribution_release }}'
+    # apt_repository:
+      # repo: 'deb http://linux.dropbox.com/ubuntu {{ ansible_distribution_release }} main'
+      # state: present
+
+  - name: dropbox | Install Dropbox
+    apt:
+      name: dropbox
+      state: present
+      update_cache: yes
+      cache_valid_time: "{{ aptcachetime }}"

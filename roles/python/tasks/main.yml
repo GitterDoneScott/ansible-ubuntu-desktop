@@ -7,3 +7,11 @@
     state: latest
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"
+
+
+- name: Alternatives link created
+  community.general.alternatives:
+    name: python
+    link: /usr/bin/python
+    path: /usr/bin/python3
+

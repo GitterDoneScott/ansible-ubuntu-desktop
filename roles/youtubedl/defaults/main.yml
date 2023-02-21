@@ -1,0 +1,4 @@
+---
+
+youtubedl_enabled: no
+youtubedl_executable_path: "/usr/local/bin/youtube-dl"

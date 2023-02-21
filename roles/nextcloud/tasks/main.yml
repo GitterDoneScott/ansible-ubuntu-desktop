@@ -1,5 +1,11 @@
 ---
 
+
+- name: Add GPG apt Key
+  apt_key:
+    url: https://nextcloud.com/nextcloud.asc
+    state: present
+
 - name: Add Nextcloud PPA repository
   apt_repository:
     repo: ppa:nextcloud-devs/client

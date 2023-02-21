@@ -35,6 +35,16 @@
       tags:
         - discord
       when: discord_enabled | bool
+    - role: dropbox
+      become: true
+      tags:
+        - dropbox
+      when: dropbox_enabled | bool
+    - role: etcher
+      become: true
+      tags:
+        - etcher
+      when: etcher_enabled | bool
     - role: filezilla
       become: true
       tags:
@@ -183,6 +193,11 @@
       tags:
         - timeshift
       when: timeshift_enabled | bool
+    - role: youtubedl
+      become: true
+      tags:
+        - youtubedl
+      when: youtubedl_enabled | bool
     - role: winbox
       become: true
       tags:

@@ -1,0 +1,21 @@
+---
+
+- name: Installing apt-key
+  apt_key: 
+    id: "70528471AFF9A051"
+    url: https://dl.cloudsmith.io/public/balena/etcher/gpg.70528471AFF9A051.key
+    state: present
+
+- name: Add repository
+  apt_repository:
+    repo: 'deb https://dl.cloudsmith.io/public/balena/etcher/deb/ubuntu {{ ansible_distribution_release }} main'
+    state: present
+
+- name: Install App
+  apt:
+    pkg: balena-etcher-electron
+    state: present
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
+
+

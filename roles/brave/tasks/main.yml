@@ -1,0 +1,25 @@
+---
+
+- name: Install apt-transport-https
+  become: true
+  apt:
+    pkg: "apt-transport-https"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"
+
+- name: Add brave GPG apt Key
+  apt_key:
+    url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    state: present
+- name: Add brave Repository
+  apt_repository:
+    repo: deb https://brave-browser-apt-release.s3.brave.com/ stable main
+    state: present
+- name: Install packages
+  ansible.builtin.apt:
+    name:
+      - brave-browser
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"

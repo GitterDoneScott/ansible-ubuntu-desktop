@@ -25,6 +25,13 @@
       tags:
         - bitwarden
       when: bitwarden_enabled | bool
+
+    - role: brave
+      become: true
+      tags:
+        - brave
+      when: brave_enabled | bool
+
     - role: chromium
       become: true
       tags:

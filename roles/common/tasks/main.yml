@@ -41,3 +41,14 @@
   become: true
   apt: 
     upgrade: "yes"
+
+- name: add {{ lookup('env', 'USER') }} to dialout group for access to tty devices
+  become: true
+  ansible.builtin.user:
+    name: "{{ lookup('env', 'USER') }}"
+    shell: /bin/bash
+    groups: dialout
+    append: yes
+
+
+

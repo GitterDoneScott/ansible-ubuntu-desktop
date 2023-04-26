@@ -11,6 +11,7 @@ awscli_enabled:               no
 awsebcli_enabled:             no
 awsecscli_enabled:            no
 barrier_enabled:              no
+brave_enabled:                yes
 bitwarden_enabled:            yes
 chromium_enabled:             yes
 common_git_enabled:           yes
@@ -95,3 +96,4 @@ ssh:
   service_enabled: true
   password_auth: false
   root_login: false
+

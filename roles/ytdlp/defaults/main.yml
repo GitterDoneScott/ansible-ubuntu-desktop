@@ -1,0 +1,5 @@
+---
+
+ytdlp_enabled: no
+ytdlp_config: "/etc/yt-dlp.conf"
+# "/home/{{ lookup('env', 'USER') }}/.yt-dlp/config"

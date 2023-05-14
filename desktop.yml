@@ -200,11 +200,20 @@
       tags:
         - timeshift
       when: timeshift_enabled | bool
+  
     - role: youtubedl
       become: true
       tags:
         - youtubedl
       when: youtubedl_enabled | bool
+
+    - role: ytdlp
+      become: true
+      tags:
+        - ytdlp
+      when: ytdlp_enabled | bool
+
+
     - role: winbox
       become: true
       tags:

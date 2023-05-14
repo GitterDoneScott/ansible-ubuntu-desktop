@@ -81,6 +81,7 @@ virtmanager_enabled:          no
 vscodium_enabled:             no
 winbox_enabled:               no
 youtubedl_enabled:            yes
+ytdlp_enabled:                yes
 zsh_enabled:                  no
 
 # http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable

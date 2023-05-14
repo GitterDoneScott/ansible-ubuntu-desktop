@@ -1,0 +1,30 @@
+---
+
+- name: Add yt-dlp Repository
+  apt_repository:
+    repo: 'ppa:tomtomtom/yt-dlp'
+    state: present
+
+
+- name: Install packages
+  ansible.builtin.apt:
+    name:
+      - yt-dlp
+      - ffmpeg
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"
+
+
+- name: Config options for yt-dlp
+  ansible.builtin.blockinfile:
+    path: "{{ ytdlp_config }}"
+    #owner: "{{ lookup('env', 'USER') }}"
+    create: true
+    block: |
+      --format-sort ext  
+      --print filename
+      --no-simulate 
+      --verbose
+      --output "%(uploader)s-%(upload_date)s-%(title)s.%(ext)s"
+

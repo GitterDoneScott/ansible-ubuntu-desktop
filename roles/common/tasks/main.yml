@@ -23,6 +23,12 @@
     update_cache: yes 
     cache_valid_time: "{{ aptcachetime }}"
 
+- name: enable universe repository
+  shell: add-apt-repository universe -y
+
+- name: enable multiverse repository
+  shell: add-apt-repository multiverse -y
+
 - name: Install common packages
   become: true
   apt: 
@@ -36,6 +42,7 @@
     name: bluetooth.service
     state: started
     enabled: yes
+  ignore_errors: true
 
 - name: Upgrade installed packages
   become: true

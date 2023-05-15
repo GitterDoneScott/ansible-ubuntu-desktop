@@ -1,0 +1,13 @@
+---
+
+- name: Add Install Audacity PPA repository
+  apt_repository:
+    repo: ppa:ubuntuhandbook1/audacity
+    state: present
+
+- name: Install Audacity
+  apt:
+    pkg: audacity
+    state: present
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

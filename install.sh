@@ -9,8 +9,9 @@
 
 if ! hash ansible >/dev/null 2>&1; then
     echo "Installing Ansible..."
+    sudo apt-add-repository ppa:ansible/ansible -y
     sudo apt-get update
-    sudo apt-get install software-properties-common ansible git python-apt -y
+    sudo apt-get install software-properties-common ansible git python-apt-doc python3-apt-dbg python3-apt python-apt-common -y
 else
     echo "Ansible already installed"
 fi

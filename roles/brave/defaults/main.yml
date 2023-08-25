@@ -1,0 +1,6 @@
+---
+
+brave:
+  set_default: true
+  policy: true
+  extensions: true

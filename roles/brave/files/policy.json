@@ -1,0 +1,17 @@
+{
+    "DefaultSearchProviderEnabled":true,
+    "DefaultSearchProviderName": "DuckDuckGo",
+    "DefaultSearchProviderIconURL":"https://duckduckgo.com/favicon.ico",
+    "DefaultSearchProviderEncodings":["UTF-8"],
+    "DefaultSearchProviderSearchURL":"https://duckduckgo.com/?q={searchTerms}",    
+    "DefaultSearchProviderSuggestURL":"https://duckduckgo.com/ac/?q={searchTerms}&type=list",
+    "DefaultSearchProviderNewTabURL":"https://duckduckgo.com/chrome_newtab",
+    "BookmarkBarEnabled": false,
+    "BraveRewardsDisabled": true,
+    "ShowAppsShortcutInBookmarkBar": false,
+    "ShowHomeButton": true,
+    "TranslateEnabled": false,
+    "HomepageIsNewTabPage": false,
+    "HomepageLocation": "https://www.google.com/",
+    "PasswordManagerEnabled": false
+}

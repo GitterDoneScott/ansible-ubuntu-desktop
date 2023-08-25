@@ -23,3 +23,51 @@
     state: latest
     update_cache: true
     cache_valid_time: "{{ aptcachetime }}"
+
+
+- name: Set Brave as default browser
+  command: update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/brave-browser 250
+  when: brave.set_default == true
+
+# See https://www.chromium.org/administrators/policy-list-3
+- name: Create Chromium policies directory for all users
+  file:
+    path: /etc/brave/policies/managed
+    state: directory
+  when: brave.policy
+
+- name: Create Chromium JSON policy file to force settings for all users
+  copy:
+    src: policy.json
+    dest: "/etc/brave/policies/managed/my-policy.json"
+  when: brave.policy
+
+- name: Create Chromium extensions directory for all users
+  file:
+    path: /usr/share/chromium/extensions
+    state: directory
+  when: brave.policy
+
+# See https://developer.chrome.com/extensions/external_extensions#preferences
+- name: Create Chromium JSON file to install extensions for all users
+  template:
+    src: chrome-extensions.json.j2
+    dest: "/usr/share/chromium/extensions/{{ item }}.json"
+  with_items:
+    - cjpalhdlnbpafiamejdnhcphjbkeiagm # ublock
+    # - ajpgkpeckebdhofmmjfgcjjiiejpodla # Xmarks Bookmark Sync
+    # - bcjindcccaagfpapjjmafapmmgkkhgoa # JSON Formatter
+    # - miefikpgahefdbcgoiicnmpbeeomffld # Blackfire Companion
+    # - fjnbnpbmkenffdnngjfgmeleoegfcffe # Stylish
+    # - jbbplnpkjmmeebjpijfedlgcdilocofh # wave-evaluation-tool
+    # - idgpnmonknjnojddfkpgkljpfnnfcklj # ModHeader
+    # - jgbbilmfbammlbbhmmgaagdkbkepnijn # Cookie Inspector
+    # - dapjbgnjinbpoindlpdmhochffioedbn # builtwith-technology-prof
+    # - deoaddaobnieaecelinfdllcgdehimih # kimono
+    # - fhbjgbiflinjbdggehcddcbncdddomop # postman
+    - nngceckbapebfimnlniiiahkandclblb #bitwarden
+    - pioclpoplcdbaefihamjohnefbikjilc #evernote web clipper
+    - bmnlcjabgnpnenekpadlanbbkooimhnj #honey
+    - engmocckoohpopiacajolojeobefbcec #add to trello
+    - kbfnbcaeplbcioakkpcpgfkobkghlhen #grammarly
+  when: brave.extensions
